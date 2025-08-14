@@ -30,4 +30,6 @@ app.use('/api/ratings', ratingsRouter);
 app.use('/api/catalog', catalogRouter);
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log('API listening on', port));
+// Bind to all interfaces for accessibility on LAN. Es necesario para
+// permitir conexiones desde dispositivos móviles en la misma red.
+app.listen(port, '0.0.0.0', () => console.log('API listening on', port));

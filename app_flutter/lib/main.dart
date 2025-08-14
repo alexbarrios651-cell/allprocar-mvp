@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'features/auth/login_page.dart';
+import 'features/auth/demo_login_page.dart';
 import 'features/home/home_page.dart';
 import 'features/requests/request_new_page.dart';
-import 'features/vehicles/vehicles_page.dart';
+import 'features/requests/requests_page.dart';
 
 void main() {
   runApp(const AllprocarApp());
@@ -15,12 +15,15 @@ class AllprocarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
-      initialLocation: '/login',
+      initialLocation: '/signin',
       routes: [
+        // Ruta principal después de la autenticación demo
         GoRoute(path: '/', builder: (_, __) => const HomePage()),
-        GoRoute(path: '/login', builder: (_, __) => const LoginPage()),
-        GoRoute(path: '/vehicles', builder: (_, __) => const VehiclesPage()),
+        // Ruta de inicio de sesión/registro demostrativo
+        GoRoute(path: '/signin', builder: (_, __) => const DemoLoginPage()),
+        // Rutas de la aplicación
         GoRoute(path: '/request/new', builder: (_, __) => const RequestNewPage()),
+        GoRoute(path: '/requests', builder: (_, __) => const RequestsPage()),
       ],
     );
 

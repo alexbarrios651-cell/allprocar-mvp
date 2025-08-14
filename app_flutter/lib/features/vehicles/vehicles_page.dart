@@ -48,15 +48,38 @@ class _VehiclesPageState extends State<VehiclesPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Row(children: [
-              Expanded(child: TextField(controller: marca, decoration: const InputDecoration(labelText: 'Marca'))),
-              const SizedBox(width: 8),
-              Expanded(child: TextField(controller: modelo, decoration: const InputDecoration(labelText: 'Modelo'))),
-              const SizedBox(width: 8),
-              SizedBox(width: 100, child: TextField(controller: anio, decoration: const InputDecoration(labelText: 'Año'), keyboardType: TextInputType.number)),
-              const SizedBox(width: 8),
-              ElevatedButton(onPressed: _add, child: const Text('Agregar')),
-            ]),
+            // Usamos Wrap en lugar de Row para que los campos se adapten a pantallas
+            // pequeñas. Si no hay espacio, los elementos saltan a la siguiente línea.
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                SizedBox(
+                  width: 150,
+                  child: TextField(
+                    controller: marca,
+                    decoration: const InputDecoration(labelText: 'Marca'),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  child: TextField(
+                    controller: modelo,
+                    decoration: const InputDecoration(labelText: 'Modelo'),
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                  child: TextField(
+                    controller: anio,
+                    decoration: const InputDecoration(labelText: 'Año'),
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+                ElevatedButton(onPressed: _add, child: const Text('Agregar')),
+              ],
+            ),
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(

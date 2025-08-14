@@ -94,12 +94,25 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 12),
                 if (error != null) Text(error!, style: const TextStyle(color: Colors.red)),
                 const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // Los tres botones se agrupan en un Wrap para evitar desbordes
+                // en pantallas estrechas. Wrap reparte los elementos en varias
+                // filas si no hay espacio suficiente.
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
                   children: [
-                    ElevatedButton(onPressed: loading? null : _login, child: const Text('Ingresar')),
-                    ElevatedButton(onPressed: loading? null : _registerCliente, child: const Text('Crear Cliente')),
-                    ElevatedButton(onPressed: loading? null : _registerProveedor, child: const Text('Crear Proveedor')),
+                    ElevatedButton(
+                      onPressed: loading ? null : _login,
+                      child: const Text('Ingresar'),
+                    ),
+                    ElevatedButton(
+                      onPressed: loading ? null : _registerCliente,
+                      child: const Text('Crear Cliente'),
+                    ),
+                    ElevatedButton(
+                      onPressed: loading ? null : _registerProveedor,
+                      child: const Text('Crear Proveedor'),
+                    ),
                   ],
                 ),
               ],
